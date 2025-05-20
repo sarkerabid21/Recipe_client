@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddRecipe = () => {
 
@@ -20,7 +21,12 @@ const AddRecipe = () => {
         .then(res => res.json())
         .then(data=>{
            if (data.insertedId){
-            console.log('added successfully',)
+            console.log('added successfully')
+            Swal.fire({
+  title: "Recipe added successfully",
+  icon: "success",
+  draggable: true
+});
            }
         })
 
@@ -76,8 +82,8 @@ const AddRecipe = () => {
 
                     <fieldset className="fieldset  p-4">
   
-  <label className="label">Preparation Time</label>
-  <input type="number" name='preparation_time' className="input w-full" placeholder="Preparation Time" />
+  <label className="label">Preparation Time(min)</label>
+  <input type="number" name='preparation_time(min)' className="input w-full" placeholder="Preparation Time" />
 </fieldset>
                   <fieldset className="fieldset p-4">
   <label className="label">
