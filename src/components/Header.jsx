@@ -14,8 +14,8 @@ const Header = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
   <NavLink className="" to="/">Home</NavLink>
                 <NavLink className=""  to="/addCoffee">Add Recipe</NavLink>
-                <NavLink className=""  to="/profile">All Recipes</NavLink>
-                <NavLink className=""  to="/profile">My Recipes</NavLink>
+                <NavLink className=""  to="/allRecipes">All Recipes</NavLink>
+                <NavLink className=""  to="/myRecipes">My Recipes</NavLink>
       </ul>
     </div>
     <div className='flex  '>
@@ -26,8 +26,8 @@ const Header = () => {
   <div className="lg:block hidden lg:gap-10 text-center items-center lg:flex lg:justify-between  text-gray-600 ">
                 <NavLink className="" to="/">Home</NavLink>
                 <NavLink className=""  to="/addRecipe">Add Recipe</NavLink>
-                <NavLink className=""  to="/profile">All Recipes</NavLink>
-                <NavLink className=""  to="/profile">My Recipes</NavLink>
+                <NavLink className=""  to="/allRecipes">All Recipes</NavLink>
+                <NavLink className=""  to="/myRecipes">My Recipes</NavLink>
                 
                 
             </div>
@@ -38,8 +38,8 @@ const Header = () => {
  
 
    
-    <Link to="" className="btn btn-primary text-xs w-[30%] ">Login</Link>
-    <Link to="" className="btn btn-secondary text-xs w-[30%] ">Register</Link>
+    <Link to="login" className="btn btn-primary text-xs w-[30%] ">Login</Link>
+    <Link to="register" className="btn btn-secondary text-xs w-[30%] ">Register</Link>
     
   </div>
 </div>
