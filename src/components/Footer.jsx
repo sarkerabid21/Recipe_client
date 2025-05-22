@@ -13,7 +13,16 @@ const Footer = () => {
     <p>
     Discover mouth-watering recipes from around the world, crafted with love and simplicity. Whether you're a beginner or a kitchen pro, Yummies makes cooking easy, fun, and flavorful. Taste the joy, one recipe at a time.
     </p>
+     
+            <h1 className='text-amber-950'>Contact</h1>
+            <p>Phone Number - 012356977</p>
+            <p>Email - yummies@gmail.com </p>
+
+            <p className="text-sm text-amber-300 mb-1">
+                © {new Date().getFullYear()} Recipe Book. All rights reserved.
+            </p>
   </aside>
+ 
   <nav>
     <h6 className="footer-title">Social</h6>
     <div className="grid grid-flow-col gap-4 ">
