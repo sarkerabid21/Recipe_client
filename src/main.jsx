@@ -17,6 +17,9 @@ import Error from './components/Error.jsx';
 import LogIn from './components/LogIn.jsx';
 import Register from './components/Register.jsx';
 import AuthProvider from './components/contexts/AuthProvider.jsx';
+import RecipeDetailsPage from './components/RecipeDetailsPage.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
+import UpdateRecipe from './components/UpdateRecipe.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,18 +39,48 @@ const router = createBrowserRouter([
     {
       path:'allRecipes',
       loader: () => fetch('http://localhost:5000/recipes'),
-      Component: AllRecipes
+      // Component: AllRecipes
+      element: (
+    <PrivateRoute>
+      <AllRecipes />
+    </PrivateRoute>
+  )
     },
     {
       path:'myRecipes',
       loader: () => fetch('http://localhost:5000/recipes'),
-      Component: MyRecipes,
+      element: (
+    <PrivateRoute>
+      <MyRecipes/>
+    </PrivateRoute>
+  )
     },
     {
-  path: 'allRecipes/:_id',
-  loader: () => fetch('http://localhost:5000/recipes'),
-  Component: RecipeDetails,
+  path: "/updateRecipe/:id",
+  element: (
+    <PrivateRoute>
+      <UpdateRecipe />
+    </PrivateRoute>
+  ),
+  loader: async ({ params }) => {
+    const res = await fetch(`http://localhost:5000/recipes/${params.id}`);
+    return res.json();
+  }
 }
+    ,
+   {
+  path: "/allRecipes/:id",
+  element: (
+    <PrivateRoute>
+      <RecipeDetailsPage />
+    </PrivateRoute>
+  ),
+  loader: async ({ params }) => {
+    const res = await fetch(`http://localhost:5000/recipes/${params.id}`);
+    return res.json();
+  }
+}
+
 ,
     {
 

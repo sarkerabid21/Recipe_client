@@ -1,12 +1,27 @@
 // LogIn.jsx
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-// import { Link } from 'react-router-dom'; // ✅ ঠিক path
 import { AuthContext } from './contexts/AuthContext';
-import { Link } from 'react-router';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const LogIn = () => {
-    const { logInUser } = useContext(AuthContext);
+    const userIcon = "https://i.ibb.co.com/mCtVwWf7/user.png";
+    const { logInUser, logout } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    const handleLogOut = () => {
+        logout()
+            .then(() => {
+                Swal.fire("Logged out!", "You logged out successfully.", "success");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     const handleLogIn = e => {
         e.preventDefault();
@@ -17,9 +32,23 @@ const LogIn = () => {
         logInUser(email, password)
             .then(result => {
                 console.log("Logged in:", result.user);
+                Swal.fire({
+                    title: "Success!",
+                    text: "You have logged in successfully!",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                }).then(() => {
+                    navigate(from, { replace: true }); // ✅ redirect to previous page or home
+                });
             })
             .catch(error => {
                 console.error(error);
+                Swal.fire({
+                    title: "Error!",
+                    text: "Login failed. Please check your credentials.",
+                    icon: "error",
+                    confirmButtonText: "Try Again"
+                });
             });
     };
 

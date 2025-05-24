@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { use, useContext } from 'react';
 import { Link, NavLink } from 'react-router';
+import { toast } from 'react-toastify';
+import { AuthContext } from './contexts/AuthContext';
 
 const Header = () => {
+  const userIcon = "https://i.ibb.co.com/mCtVwWf7/user.png";
+ const { user, logOutUser } = useContext(AuthContext);
+
+ 
+
+  const handleLogOut = () => {
+    toast("You logged out successfully.");
+    logOutUser()
+      .then(() => {
+        // logout successful
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
     return (
        <div className="lg:w-full navbar bg-base-100 shadow-sm  px-10">
   <div className="navbar-start">
@@ -36,10 +54,34 @@ const Header = () => {
   
 
  
+<details className="dropdown">
+  <summary className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden">
+    <img className="w-full h-full object-cover" src={`${user ? user.photo : userIcon}`} alt="User" />
+  </summary> 
+  <ul className="menu dropdown-content bg-base-100 rounded-box z-10 w-64 p-2 shadow-sm mt-2">
+    <li>
+      <a className="block w-full  text-sm">
+        {user && user.displayName }
+      </a>
+    </li>
+    <li>
+      <a className="block w-full  text-sm">
+        {user && user.email }
+      </a>
+    </li>
+    
+    <li> <Link onClick={handleLogOut}  className="">LogOut</Link></li>
 
+  </ul>
+</details>
    
-    <Link to="login" className="btn btn-primary text-xs w-[30%] ">Login</Link>
-    <Link to="register" className="btn btn-secondary text-xs w-[30%] ">Register</Link>
+    {!user && (
+  <>
+    <Link to="login" className="btn btn-primary text-xs w-[30%]">Login</Link>
+    <Link to="register" className="btn btn-secondary text-xs w-[30%]">Register</Link>
+  </>
+)}
+
     
   </div>
 </div>
