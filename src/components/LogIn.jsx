@@ -4,6 +4,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from './contexts/AuthContext';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from './firebase/firebase.init';
 
 const LogIn = () => {
     const userIcon = "https://i.ibb.co.com/mCtVwWf7/user.png";
@@ -13,15 +15,17 @@ const LogIn = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    const handleLogOut = () => {
-        logout()
-            .then(() => {
-                Swal.fire("Logged out!", "You logged out successfully.", "success");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+    const provider = new GoogleAuthProvider
+    const handleGoogleSignIn = () =>{
+        console.log('googlee sign');
+
+        signInWithPopup(auth,provider)
+         .then(result => {
+            console.log(result)
+        }).catch(error => {
+            console.log(error)
+        })
+    }
 
     const handleLogIn = e => {
         e.preventDefault();
@@ -66,7 +70,7 @@ const LogIn = () => {
 
                         <div className='space-y-4'>
                             <button type='submit' className="btn btn-neutral mt-4 w-full">Login</button>
-                            <button className='btn btn-secondary w-full'><FcGoogle size={24} />Login with Google</button>
+                            <button onClick={handleGoogleSignIn} className='btn btn-secondary w-full'><FcGoogle size={24} />Login with Google</button>
                         </div>
 
                         <p className='mt-3 text-center font-semibold'>

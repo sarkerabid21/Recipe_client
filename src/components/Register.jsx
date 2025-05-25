@@ -4,11 +4,27 @@ import { FcGoogle } from 'react-icons/fc';
 import { use } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import Swal from 'sweetalert2';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from './firebase/firebase.init';
 
 const Register = () => {
     const { createUser } = use(AuthContext);
     const [passwordError, setPasswordError] = useState('');
     const navigate = useNavigate();
+
+    const provider = new GoogleAuthProvider 
+    
+    const handleGoogleSignIn = () =>{
+        console.log('googlee sign')
+
+        signInWithPopup(auth, provider)
+         .then(result => {
+            // console.log(result)
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+
 
     const handleRegister = e => {
         e.preventDefault();
@@ -98,7 +114,7 @@ const Register = () => {
 
                         <div className='space-y-4'>
                             <button type='submit' className="btn btn-neutral mt-4 w-full">Register</button>
-                            <button className='btn btn-secondary w-full'><FcGoogle size={24} />Login with Google</button>
+                            <button  onClick={handleGoogleSignIn} className='btn btn-secondary w-full'><FcGoogle size={24} />Login with Google</button>
                         </div>
 
                         <p className='mt-3 text-center font-semibold'>
