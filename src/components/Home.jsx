@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { Typewriter } from 'react-simple-typewriter';
+import { Tooltip } from 'react-tooltip';
 
 const Home = () => {
     const [topRecipes, setTopRecipes] = useState([]);
@@ -13,23 +15,44 @@ const Home = () => {
 
     return (
         <div>
-            {/* 🔶 Banner Section */}
+          
             <div>
                 <img src="https://i.ibb.co/606FCnHZ/banner1z.jpg" alt="Banner" />
             </div>
             <div className='absolute top-70 space-y-8 p-10'>
                 <p className='text-4xl max-w-4xl font-bold'>
-                    It's our pleasure to have you here, exploring delicious recipes with us. Your visit is a true delight — let's dive into a world of flavor, together!
-                </p>
-                <button
-                    onClick={() => navigate('/allRecipes')}
-                    className='text-2xl font-bold bg-amber-200 p-3 rounded-2xl'
-                >
-                    Let's Go....
-                </button>
+  <Typewriter
+    words={[
+      "Welcome to Recipe Book!",
+      "Discover mouth-watering recipes.",
+      "Cook it. Love it. Share it.",
+      "Let's dive into a world of flavor!"
+    ]}
+    loop={true}
+    cursor
+    cursorStyle='|'
+    typeSpeed={70}
+    deleteSpeed={50}
+    delaySpeed={1500}
+  />
+</p>
+
+
+               <button
+  data-tooltip-id="go-btn"
+  data-tooltip-content="Explore all recipes now!"
+  onClick={() => navigate('/allRecipes')}
+  className='cursor-pointer text-2xl font-bold bg-amber-200 p-3 rounded-2xl'
+>
+  Let's Go....
+</button>
+
+<Tooltip id="go-btn" place="top" />
+
+                
             </div>
 
-            {/* 🔶 Section 1: Top Recipes */}
+        
             <div className="my-20 px-6">
                 <h2 className="text-3xl font-bold mb-6">Top Liked Recipes</h2>
                 <div className="grid md:grid-cols-3 gap-6">
@@ -62,7 +85,7 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* 🔶 Extra Static Section 1: Why Choose Us */}
+            
             <div className="my-20 px-6 bg-orange-50 p-10 rounded-2xl shadow">
                 <h2 className="text-3xl font-bold mb-4 text-center">Why Choose Us?</h2>
                 <ul className="grid md:grid-cols-3 gap-6 text-lg">
@@ -75,7 +98,7 @@ const Home = () => {
                 </ul>
             </div>
 
-            {/*  Extra Static Section 2: Cooking Tips */}
+            
             <div className="my-20 px-6 bg-green-50 p-10 rounded-2xl shadow">
                 <h2 className="text-3xl font-bold mb-4 text-center">Cooking Tips & Tricks</h2>
                 <div className="space-y-4 text-lg">

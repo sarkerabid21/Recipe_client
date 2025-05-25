@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebook} from 'react-icons/fa';
 import { FaGooglePlusG, FaSquareThreads } from 'react-icons/fa6';
+import { Tooltip } from 'react-tooltip';
 
 const Footer = () => {
     return (
@@ -13,6 +14,7 @@ const Footer = () => {
     <p>
     Discover mouth-watering recipes from around the world, crafted with love and simplicity. Whether you're a beginner or a kitchen pro, Yummies makes cooking easy, fun, and flavorful. Taste the joy, one recipe at a time.
     </p>
+    
      
             <h1 className='text-amber-950'>Contact</h1>
             <p>Phone Number - 012356977</p>

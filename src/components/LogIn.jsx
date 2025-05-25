@@ -9,7 +9,7 @@ import { auth } from './firebase/firebase.init';
 
 const LogIn = () => {
     const userIcon = "https://i.ibb.co.com/mCtVwWf7/user.png";
-    const { logInUser, logout } = useContext(AuthContext);
+    const { logInUser} = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -42,7 +42,7 @@ const LogIn = () => {
                     icon: "success",
                     confirmButtonText: "OK"
                 }).then(() => {
-                    navigate(from, { replace: true }); // ✅ redirect to previous page or home
+                    navigate(from, { replace: true }); 
                 });
             })
             .catch(error => {

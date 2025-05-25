@@ -1,4 +1,4 @@
-// AddRecipe.jsx
+
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from './contexts/AuthContext';
@@ -12,7 +12,6 @@ const AddRecipe = () => {
         const formData = new FormData(form);
         const newRecipe = Object.fromEntries(formData.entries());
 
-        // ✅ Add logged-in user's email
         newRecipe.userEmail = user?.email;
 
         fetch('http://localhost:5000/recipes', {

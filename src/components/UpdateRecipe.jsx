@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from './contexts/AuthContext';
 import { useLoaderData, useNavigate } from 'react-router';
@@ -17,7 +16,7 @@ const UpdateRecipe = () => {
 
         updatedRecipe.userEmail = user?.email;
 
-        // Handle checkboxes
+        
         const categories = [];
         form.querySelectorAll('input[name="categories"]:checked').forEach(checkbox => {
             categories.push(checkbox.value);

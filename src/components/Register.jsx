@@ -19,7 +19,7 @@ const Register = () => {
 
         signInWithPopup(auth, provider)
          .then(result => {
-            // console.log(result)
+            console.log(result)
         }).catch(error => {
             console.log(error)
         })
@@ -32,7 +32,7 @@ const Register = () => {
         const formData = new FormData(form);
         const { email, password, ...rest } = Object.fromEntries(formData.entries());
 
-        // ✅ Password Validation
+       
         const hasUppercase = /[A-Z]/.test(password);
         const hasLowercase = /[a-z]/.test(password);
         const isLongEnough = password.length >= 6;
@@ -47,7 +47,7 @@ const Register = () => {
             return;
         }
 
-        setPasswordError(""); // Clear error if valid
+        setPasswordError(""); 
 
         const userProfile = {
             email,
@@ -58,7 +58,7 @@ const Register = () => {
             .then(result => {
                 console.log(result.user);
 
-                // save user in DB
+                
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -74,7 +74,7 @@ const Register = () => {
                                 icon: "success",
                                 timer: 1500,
                             });
-                            navigate("/"); // ✅ Redirect to Home
+                            navigate("/"); 
                         }
                     });
             })
@@ -107,7 +107,7 @@ const Register = () => {
                         <input name='photo' type="text" className="input" placeholder="Photo Url" required />
                         <label className="label">Password</label>
                         <input name='password' type="password" className="input" placeholder="Password" required />
-                        {/* ✅ Password Error Show */}
+                        
                         {passwordError && <p className='text-red-500 text-xs'>{passwordError}</p>}
 
                         <div><a className="link link-hover">Forgot password?</a></div>

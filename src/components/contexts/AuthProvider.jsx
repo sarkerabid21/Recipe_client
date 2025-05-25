@@ -18,7 +18,7 @@ const logOutUser = () => {
     return signOut(auth);
 };
 
-    // Track user state
+   
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
