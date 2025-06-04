@@ -59,7 +59,7 @@ const Register = () => {
                 console.log(result.user);
 
                 
-                fetch('http://localhost:5000/users', {
+                fetch('https://food-recipe-server-coral.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

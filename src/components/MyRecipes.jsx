@@ -8,7 +8,7 @@ const MyRecipes = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:5000/recipes?userEmail=${user.email}`)
+    fetch(`https://food-recipe-server-coral.vercel.app/recipes?userEmail=${user.email}`)
       .then(res => res.json())
       .then(data => setRecipes(data));
   }, [user]);

@@ -23,7 +23,7 @@ const UpdateRecipe = () => {
         });
         updatedRecipe.categories = categories;
 
-        fetch(`http://localhost:5000/recipes/${recipe._id}`, {
+        fetch(`https://food-recipe-server-coral.vercel.app/recipes/${recipe._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
  
       index:true,
-      loader: () => fetch('http://localhost:5000/recipes'),
+      loader: () => fetch('https://food-recipe-server-coral.vercel.app/recipes'),
       Component: Home
     },
     {
@@ -38,7 +38,11 @@ const router = createBrowserRouter([
     },
     {
       path:'allRecipes',
-      loader: () => fetch('http://localhost:5000/recipes'),
+      loader: async () => {
+  const res = await fetch('https://food-recipe-server-coral.vercel.app/recipes');
+  return res.json();
+},
+
       element: (
     <PrivateRoute>
       <AllRecipes />
@@ -47,7 +51,7 @@ const router = createBrowserRouter([
     },
     {
       path:'myRecipes',
-      loader: () => fetch('http://localhost:5000/recipes'),
+      loader: () => fetch('https://food-recipe-server-coral.vercel.app/recipes'),
       element: (
     <PrivateRoute>
       <MyRecipes/>
@@ -62,7 +66,7 @@ const router = createBrowserRouter([
     </PrivateRoute>
   ),
   loader: async ({ params }) => {
-    const res = await fetch(`http://localhost:5000/recipes/${params.id}`);
+    const res = await fetch(`https://food-recipe-server-coral.vercel.app/recipes/${params.id}`);
     return res.json();
   }
 }
@@ -75,7 +79,7 @@ const router = createBrowserRouter([
     </PrivateRoute>
   ),
   loader: async ({ params }) => {
-    const res = await fetch(`http://localhost:5000/recipes/${params.id}`);
+    const res = await fetch(`https://food-recipe-server-coral.vercel.app/recipes/${params.id}`);
     return res.json();
   }
 }

@@ -23,7 +23,7 @@ const RecipeDetails = ({ recipe }) => {
     console.log(result.isConfirmed)
   if (result.isConfirmed) {
 
-    fetch(`http://localhost:5000/recipes/${_id}`,{
+    fetch(`https://food-recipe-server-coral.vercel.app/recipes/${_id}`,{
         method: 'DELETE'
     })
     .then(res => res.json())
@@ -46,7 +46,7 @@ const RecipeDetails = ({ recipe }) => {
   const handleLike = () => {
     if (isLiked || !user) return;
 
-    fetch(`http://localhost:5000/recipes/${recipe._id}/like`, {
+    fetch(`https://food-recipe-server-coral.vercel.app/recipes/${recipe._id}/like`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

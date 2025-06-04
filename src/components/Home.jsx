@@ -8,7 +8,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/top-recipes')
+        fetch('https://food-recipe-server-coral.vercel.app/top-recipes')
             .then(res => res.json())
             .then(data => setTopRecipes(data));
     }, []);
